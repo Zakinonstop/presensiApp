@@ -132,25 +132,13 @@ class HomeController extends Controller
             // return "absen masuk";
         } elseif (isset($request->btnOut)) {
 
-            // $absen = Absen::find($user_id);
-            // $absen->time_out = $time;
-            // $absen->note = $note;
-            // $absen->save();
-
-            // $absen->where(['date' => $date, 'user_id' => $user_id])
-            //     ->update([
-            //         'time_out' => $time,
-            //         'note' => $note
-            //     ]);
-
             $absen = DB::table('Absen')
-                ->where('user_id', $user_id)
+                ->where(['user_id' => $user_id, 'date' => $date])
                 ->update([
                     'time_out' => $time,
                     'note' => $note
                 ]);
             return redirect()->back();
-            // return "absen keluar";
         }
 
         return $request->all();

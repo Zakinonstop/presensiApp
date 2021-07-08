@@ -30,11 +30,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
-                <div>
-                    <nav-link>
-                        Jadwal
-                    </nav-link>
-                </div>
+                @auth
+                    <li class="nav-item">
+                        <a href="{{ url('dataSiswa') }}" class="nav-link">Data Siswa</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('jadwal') }}" class="nav-link">Jadwal</a>
+                    </li>
+                @endauth
 
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
