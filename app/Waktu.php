@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mapel extends Model
+class Waktu extends Model
 {
     //
-    protected $table = 'mapel';
+    protected $table = 'waktu';
     // protected $fillable = 'nama_mapel';
     protected $guarded = [];
-    protected $fillable = ['id', 'nama_mapel'];
+    protected $fillable = ['id', 'jam_ke'];
     protected $primaryKey = 'id';
 
     public function jadwal()
     {
-        return $this->hasMany(Jadwal::class, 'id', 'mapel_id');
+        return $this->hasMany(Jadwal::class);
     }
 }

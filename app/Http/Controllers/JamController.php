@@ -39,7 +39,7 @@ class JamController extends Controller
         DB::insert("insert into jam(jam_ke,jam_masuk, jam_keluar, created_at, updated_at)
         values('$jam_ke','$jam_masuk','$jam_keluar', now(), now())");
 
-        return redirect('/jam');
+        return redirect('/jam')->with('inJam', 'Data Berhasil Ditambahkah !');;
     }
 
     public function delete($id)
@@ -62,6 +62,7 @@ class JamController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        // dd($data);
         $data['slug'] = Str::slug($request->jam_ke);
         // $data['slug'] = Str::slug($request->jam_masuk);
         // $data['slug'] = Str::slug($request->jam_keluar);

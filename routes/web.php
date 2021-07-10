@@ -47,3 +47,8 @@ Route::get('/editJam/{id}', 'JamController@update');
 
 //jadwal
 Route::get('/jadwal', 'JadwalController@index');
+Route::get('/tambahJadwal', 'JadwalController@formJadwal');
+Route::post('/insertJadwal', 'JadwalController@insert');
+Route::get('/hapusJadwal/{id}', 'JadwalController@delete');
+Route::get('/formEditJadwal/{id}', 'JadwalController@formEditJadwal');
+Route::post('/editJadwal/{jadwal}', 'JadwalController@update')->name('jadwal.update');

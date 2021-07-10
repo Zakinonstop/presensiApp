@@ -8,7 +8,9 @@
           <div class="section-header">
             <h1>Jam Pelajaran</h1>
           </div>
-
+          @if(session('inJam'))
+          <div>{{ session('inJam')}}</div>
+         @endif
           <div class="section-body">
               <h3>Daftar Jam Pelajaran</h3>
               <div class="row">
