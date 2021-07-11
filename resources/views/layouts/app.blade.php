@@ -31,13 +31,9 @@
                 </button>
                 
                 @auth
-                    <li class="nav-item">
-                        <a href="{{ url('dataSiswa') }}" class="nav-link">Data Siswa</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ url('jadwal') }}" class="nav-link">Jadwal</a>
-                    </li>
+                    <a href="{{ url('home') }}" class="nav-link">Presensi</a>
+                    <a href="{{ url('profil') }}" class="nav-link">Profil</a>
+                    <a href="{{ url('jadwalKelas') }}" class="nav-link">Jadwal</a>
                 @endauth
 
 

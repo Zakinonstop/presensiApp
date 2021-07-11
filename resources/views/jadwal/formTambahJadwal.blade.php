@@ -31,6 +31,16 @@
                     <form role="form" method="post" action="/insertJadwal">
                         {{ csrf_field() }}
                           <div class="card-body">
+
+                            <div class="form-group">
+                              <label>Kelas</label>
+                              <select class="form-control" name="nama_kelas">
+                                @foreach ($kelas as $ke)
+                                <option value="{{ $ke->id}}">{{ $ke->nama_kelas}}</option>
+                                 @endforeach
+                              </select>
+                            </div>
+
                             <div class="form-group">
                               <label>Hari</label>
                               <select class="form-control" name="hari">

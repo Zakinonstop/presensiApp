@@ -8,9 +8,29 @@
           <div class="section-header">
             <h1>Jam Pelajaran</h1>
           </div>
-          @if(session('inJam'))
-          <div>{{ session('inJam')}}</div>
+          @if(session('insert'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('insert')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+         @elseif(session('delete'))
+         <div class="alert alert-danger alert-dismissible fade show" role="alert">
+           {{ session('delete')}}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         @elseif(session('update'))
+         <div class="alert alert-warning alert-dismissible fade show" role="alert">
+           {{ session('update')}}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
          @endif
+         
           <div class="section-body">
               <h3>Daftar Jam Pelajaran</h3>
               <div class="row">
@@ -32,7 +52,7 @@
                         <td>{{ $ja->jam_ke }}</td>
                         <td>{{ $ja->jam_masuk }}</td>
                         <td>{{ $ja->jam_keluar }}</td>
-                        <td><a href="/formEditJam/{{ $ja->id}}" class="btn btn-primary">Edit</a>  | <a href="/hapusJam/{{ $ja->id}}" class="btn btn-primary">Hapus</a> </td>
+                        <td><a href="/formEditJam/{{ $ja->id}}" class="btn btn-primary">Edit</a>  | <a href="/hapusJam/{{ $ja->id}}" class="btn btn-danger">Hapus</a> </td>
                     </tbody>
                         
                     @endforeach

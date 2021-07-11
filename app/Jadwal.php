@@ -16,14 +16,12 @@ class Jadwal extends Model
     public function jam()
     {
         return $this->belongsTo(Jam::class, 'jam_id', 'id');
-
-        // return $this->hasOne(Jam::class, 'jam_id', 'id');
     }
 
-    // public function waktu()
-    // {
-    //     return $this->belongsTo(Waktu::class);
-    // }
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
+    }
 
     public function mapel()
     {

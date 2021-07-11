@@ -39,7 +39,7 @@ class JamController extends Controller
         DB::insert("insert into jam(jam_ke,jam_masuk, jam_keluar, created_at, updated_at)
         values('$jam_ke','$jam_masuk','$jam_keluar', now(), now())");
 
-        return redirect('/jam')->with('inJam', 'Data Berhasil Ditambahkah !');;
+        return redirect('/jam')->with('insert', 'Data Berhasil Ditambahkah !');
     }
 
     public function delete($id)
@@ -47,7 +47,7 @@ class JamController extends Controller
         $jam = AppJam::find($id);
         $jam->delete();
 
-        return redirect('/jam');
+        return redirect('/jam')->with('delete', 'Data Berhasil Dihapus !');
     }
 
 
@@ -72,6 +72,6 @@ class JamController extends Controller
         $jam->update($data);
 
 
-        return redirect('/jam');
+        return redirect('/jam')->with('update', 'Data Berhasil Diedit !');
     }
 }

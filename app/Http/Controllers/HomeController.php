@@ -41,33 +41,11 @@ class HomeController extends Controller
             ->get()
             ->first();
 
-
-
         if (isset($cek_absen)) {
             $info = [
                 "status" => "anda belum presensi"
             ];
         }
-
-        // if (is_null($cek_absen)) {
-        //     $info  = array([
-        //         "status" => "Anda belum melakukan Presensi",
-        //         "btnIn" => " ",
-        //         "btnOut" => "disable",
-        //     ]);
-        // } elseif ($cek_absen->time_out == NULL) {
-        //     $info  = array([
-        //         "status" => "Jangan Lupa Presensi Keluar",
-        //         "btnIn" => "disable",
-        //         "btnOut" => "",
-        //     ]);
-        // } else {
-        //     $info  = array([
-        //         "status" => "Presensi telah selesai",
-        //         "btnIn" => "disable",
-        //         "btnOut" => "disable",
-        //     ]);
-        // }
 
         $cek_absen = Absen::where(['date' => $date, 'user_id' => $user_id])
             ->get()

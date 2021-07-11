@@ -6,11 +6,11 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Jam Pelajaran</h1>
+            <h1>Kelas</h1>
           </div>
 
           <div class="section-body">
-              <h3>Edit Jam Pelajaran</h3>
+              <h3>Tambah Kelas</h3>
              
               @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -23,28 +23,18 @@
                             @endif
               <div class="row">
                 <div class="col-md-12">
-                    <form role="form" method="post" action="/editJam/{{ $jam->id }}}">
-                      {{-- @method(PUT) --}}
+                    <form role="form" method="post" action="/insertKelas">
                         {{ csrf_field() }}
                         <div class="card-body">
-                          <div class="form-group">
-                              <label for="jam_ke">Jam Ke</label>
-                              <input type="text" name="jam_ke" class="form-control" id="jam_ke" placeholder="Satu" value="{{ $jam->jam_ke}}">
-                          </div>
-                          <div class="form-group">
-                              <label for="jam_masuk">Jam Masuk</label>
-                              <input type="time" name="jam_masuk" class="form-control" id="jam_masuk"value="{{ $jam->jam_masuk}}">
-                          </div>
-                          <div class="form-group">
-                              <label for="jam_keluar">Jam Keluar</label>
-                              <input type="time" name="jam_keluar" class="form-control" id="jam_keluar" 
-                              value="{{ $jam->jam_keluar}}">
-                          </div>
-                          
-                      </div>
+                            <div class="form-group">
+                                <label for="nama_kelas">Kelas</label>
+                                <input type="text" name="nama_kelas" class="form-control" id="nama_kelas" placeholder="masukkan nama kelas..">
+                            </div>
+                            
+                        </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                  </div>
@@ -62,9 +52,9 @@
     </div>
   </div>
 
-  @endsection
+@endsection
 
-  @section('script')
+@section('script')
       
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -84,4 +74,4 @@
 </body>
 </html>
 
-  @endsection
+@endsection

@@ -6,11 +6,11 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Jam Pelajaran</h1>
+            <h1>Data Siswa</h1>
           </div>
 
           <div class="section-body">
-              <h3>Edit Jam Pelajaran</h3>
+              <h3>Tambah Data Siswa</h3>
              
               @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -23,28 +23,36 @@
                             @endif
               <div class="row">
                 <div class="col-md-12">
-                    <form role="form" method="post" action="/editJam/{{ $jam->id }}}">
-                      {{-- @method(PUT) --}}
+                    <form role="form" method="post" action="/insertMapel">
                         {{ csrf_field() }}
                         <div class="card-body">
-                          <div class="form-group">
-                              <label for="jam_ke">Jam Ke</label>
-                              <input type="text" name="jam_ke" class="form-control" id="jam_ke" placeholder="Satu" value="{{ $jam->jam_ke}}">
-                          </div>
-                          <div class="form-group">
-                              <label for="jam_masuk">Jam Masuk</label>
-                              <input type="time" name="jam_masuk" class="form-control" id="jam_masuk"value="{{ $jam->jam_masuk}}">
-                          </div>
-                          <div class="form-group">
-                              <label for="jam_keluar">Jam Keluar</label>
-                              <input type="time" name="jam_keluar" class="form-control" id="jam_keluar" 
-                              value="{{ $jam->jam_keluar}}">
-                          </div>
-                          
-                      </div>
+                            <div class="form-group">
+                                <label for="name">Nama</label>
+                                <input type="text" name="name" class="form-control" id="name" >
+                            </div>
+                            
+                            <div class="form-group ">
+                              <label for="kelas">Kelas</label>
+                              <select class="form-control" name="kelas">
+                                @foreach ($kelas as $ke)
+                                     <option value="{{ $ke->id}}" >{{ $ke->nama_kelas}}</option>
+                                 @endforeach
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" class="form-control" id="email" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" id="password" value="qwerty123">
+                            </div>
+                        </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                  </div>

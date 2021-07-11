@@ -43,14 +43,13 @@
             </div>
             <ul class="sidebar-menu">
                 <li class="menu-header">Menu</li>
-                <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Data Siswa</span></a></li>
-                <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Kelas</span></a></li><hr>
-                <li><a class="nav-link" href="/jadwal"><i class="fas fa-pencil-ruler"></i> <span>Jadwal</span></a></li>
-                <li><a class="nav-link" href="/mapel"><i class="fas fa-pencil-ruler"></i> <span>Mata Pelajaran</span></a></li>
+                <li><a class="nav-link" href="/dataSiswa"><i class="fas fa-pencil-ruler"></i> <span>Data Siswa</span></a></li>
+                <li><a class="nav-link" href="/jadwal"><i class="fas fa-pencil-ruler"></i> <span>Jadwal</span></a></li><hr>
+                <li><a class="nav-link" href="/kelas"><i class="fas fa-pencil-ruler"></i> <span>Kelas</span></a></li>
                 <li><a class="nav-link" href="/jam"><i class="fas fa-pencil-ruler"></i> <span>Jam Pelajaran</span></a></li>
-                <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Riwayat Presensi</span></a></li>
+                <li><a class="nav-link" href="/mapel"><i class="fas fa-pencil-ruler"></i> <span>Mata Pelajaran</span></a></li><hr>
+                <li><a class="nav-link" href="/presensi"><i class="fas fa-pencil-ruler"></i> <span>Riwayat Presensi</span></a></li>
               </ul>
-  
           </aside>
         </div>
   

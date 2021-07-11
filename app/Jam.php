@@ -15,7 +15,7 @@ class Jam extends Model
 
     public function jadwal()
     {
-        return $this->hasOne(Jadwal::class, 'id', 'jam_id');
+        return $this->hasMany(Jadwal::class, 'id', 'jam_id');
 
         // return $this->belongsTo(Jadwal::class, 'id', 'jam_id');
     }

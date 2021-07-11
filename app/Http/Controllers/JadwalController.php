@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jadwal as AppJadwal;
 use App\Jam as AppJam;
 use App\Mapel as AppMapel;
+use App\Kelas as AppKelas;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,10 +16,24 @@ use Psy\TabCompletion\Matcher\FunctionsMatcher;
 class JadwalController extends Controller
 {
     //lihat jadwal
-    public function index()
+    public function index(Request $request)
     {
-        $jadwal = AppJadwal::with(['mapel', 'jam'])->get();
-        return view('jadwal.jadwal', ['jadwal' => $jadwal]);
+        $keyword = $request->get('keyword');
+
+        $jadwal = AppJadwal::with(['mapel', 'jam', 'kelas'])->get();
+        $kelas = AppKelas::all();
+        $CariKelas = AppKelas::all();
+
+        if ($keyword) {
+            $jadwal = AppJadwal::with(['mapel', 'jam', 'kelas'])
+                ->where('kelas_id', '=', "$keyword")
+                ->get();
+
+            // $jadwal = AppJadwal::where('kelas_id', '=', "$keyword");
+            // $jadwal = AppJadwal::with(['mapel', 'jam', 'kelas'])->where('kelas_id', '=', "$keyword");
+            // dd($jadwal);
+        }
+        return view('jadwal.jadwal', compact('jadwal', 'kelas', 'CariKelas'));
     }
 
 
@@ -26,10 +41,11 @@ class JadwalController extends Controller
     {
         $jam = AppJam::all();
         $mapel = AppMapel::all();
+        $kelas = AppKelas::all();
 
         // return view('jam.jam', ['jam' => $jam]);
 
-        return view('jadwal.formTambahJadwal', compact('jam', 'mapel'));
+        return view('jadwal.formTambahJadwal', compact('jam', 'mapel', 'kelas'));
     }
 
 
@@ -37,18 +53,20 @@ class JadwalController extends Controller
     {
         // $jadwal = AppJadwal::all();
 
-
         $validasi = $request->validate([
+            'nama_kelas' => '',
             'hari' => '',
             'jam_ke' => '',
             'nama_mapel' => '',
         ]);
 
+        $nama_kelas = $validasi['nama_kelas'];
         $hari = $validasi['hari'];
         $jam_ke = $validasi['jam_ke'];
         $nama_mapel = $validasi['nama_mapel'];
 
         $jadwal = DB::table('jadwal')
+            ->where('kelas_id', '=', $nama_kelas)
             ->where('hari', '=', $hari)
             ->where('jam_id', '=', $jam_ke)
             ->get();
@@ -58,8 +76,8 @@ class JadwalController extends Controller
             return redirect('/tambahJadwal')->with('status', 'Hari dan Jam tersebut sudah terpakai !');
         } else {
 
-            DB::insert("insert into jadwal(hari, jam_id, mapel_id, created_at, updated_at)
-        values('$hari','$jam_ke','$nama_mapel', now(), now())");
+            DB::insert("insert into jadwal(kelas_id, hari, jam_id, mapel_id, created_at, updated_at)
+        values('$nama_kelas','$hari','$jam_ke','$nama_mapel', now(), now())");
         }
 
         return redirect('/jadwal')->with('insert', 'Data Berhasil di Tambah !');
@@ -71,7 +89,7 @@ class JadwalController extends Controller
         $jadwal = AppJadwal::find($id);
         $jadwal->delete();
 
-        return redirect('/jadwal')->with('delJadwal', 'Data Berhasil Dihapus !');
+        return redirect('/jadwal')->with('delete', 'Data Berhasil Dihapus !');
     }
 
 

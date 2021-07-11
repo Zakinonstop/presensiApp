@@ -6,7 +6,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Mata Pelajaran</h1>
+            <h1>Data Siswa</h1>
           </div>
 
           @if(session('insert'))
@@ -33,23 +33,27 @@
          @endif
 
           <div class="section-body">
-              <h3>Daftar Mata Pelajaran</h3>
+              <h3>Data Siswa</h3>
               <div class="row">
                   <div class="col-md-4 float-right">
-                  <a href="/tambahMapel" class="btn btn-primary">Tambah Mata Pelajaran</a>
+                  <a href="/tambahSiswa" class="btn btn-primary">Tambah Data Siswa</a>
                     </div>
                 </div><br>
               <table class="table">
                 <thead>
-                    <th>Id_mapel</th>
-                    <th>Mapel</th>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Email</th>
                     <th>Aksi</th>
                 </thead>
-                @foreach ($mapel as $ma)
+                @foreach ($siswa as $si)
                     <tbody>
-                    <td>{{ $ma->id }}</td>
-                    <td>{{ $ma->nama_mapel }}</td>
-                    <td><a href="/formEditMapel/{{ $ma->id}}" class="btn btn-primary">Edit</a>  | <a href="/hapusMapel/{{ $ma->id}}" class="btn btn-danger">Hapus</a> </td>
+                    <td>{{ $si->id }}</td>
+                    <td>{{ $si->name }}</td>
+                    <td>{{ $si->kelas->nama_kelas }}</td>
+                    <td>{{ $si->email }}</td>
+                    <td><a href="/formEditSiswa/{{ $si->id}}" class="btn btn-primary">Edit</a>  | <a href="/hapusSiswa/{{ $si->id}}" class="btn btn-danger">Hapus</a> </td>
                 </tbody>
                 @endforeach
                 

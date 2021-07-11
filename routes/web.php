@@ -43,7 +43,7 @@ Route::get('/tambahJam', 'JamController@formJam');
 Route::post('/insertJam', 'JamController@insert');
 Route::get('/hapusJam/{id}', 'JamController@delete');
 Route::get('/formEditJam/{id}', 'JamController@formEditJam');
-Route::get('/editJam/{id}', 'JamController@update');
+Route::post('/editJam/{id}', 'JamController@update');
 
 //jadwal
 Route::get('/jadwal', 'JadwalController@index');
@@ -52,3 +52,34 @@ Route::post('/insertJadwal', 'JadwalController@insert');
 Route::get('/hapusJadwal/{id}', 'JadwalController@delete');
 Route::get('/formEditJadwal/{id}', 'JadwalController@formEditJadwal');
 Route::post('/editJadwal/{jadwal}', 'JadwalController@update')->name('jadwal.update');
+
+//kelas
+Route::get('/kelas', 'KelasController@index');
+Route::get('/tambahKelas', 'KelasController@formKelas');
+Route::post('/insertKelas', 'KelasController@insert');
+Route::get('/hapusKelas/{id}', 'KelasController@delete');
+Route::get('/formEditKelas/{id}', 'KelasController@formEditKelas');
+Route::post('/editKelas/{id}', 'KelasController@update');
+
+//presensi
+Route::get('/presensi', 'AbsenController@index');
+Route::get('/hapusKelas/{id}', 'AbsenController@delete');
+
+/* Route::get('/tambahKelas', 'KelasController@formKelas');
+Route::post('/insertKelas', 'KelasController@insert');
+Route::get('/formEditKelas/{id}', 'KelasController@formEditKelas');
+Route::post('/editKelas/{id}', 'KelasController@update'); */
+
+//siswa
+Route::get('/dataSiswa', 'SiswaController@index');
+Route::get('/hapusSiswa/{id}', 'SiswaController@delete');
+Route::get('/tambahSiswa', 'SiswaController@formSiswa');
+// Route::get('/formEditSiswa/{id}', 'KelasController@formEditKelas');
+// Route::post('/insertKelas', 'KelasController@insert');
+// Route::post('/editKelas/{id}', 'KelasController@update');
+
+//jadwal
+Route::get('/jadwalKelas', 'JadwalKelasController@index');
+
+//profil
+Route::get('/profil', 'ProfilController@index');

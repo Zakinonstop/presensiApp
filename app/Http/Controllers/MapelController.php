@@ -21,7 +21,7 @@ class MapelController extends Controller
 
     public function formMapel()
     {
-        return view('mapel.formTambahMapel',);
+        return view('mapel.formTambahMapel');
     }
 
     public function formEditMapel($id)
@@ -42,7 +42,7 @@ class MapelController extends Controller
         DB::insert("insert into mapel(nama_mapel, created_at, updated_at)
         values('$nama_mapel', now(), now())");
 
-        return redirect('/mapel');
+        return redirect('/mapel')->with('insert', 'Data Berhasil Ditambahkah !');
     }
 
     public function delete($id)
@@ -50,7 +50,7 @@ class MapelController extends Controller
         $mapel = AppMapel::find($id);
         $mapel->delete();
 
-        return redirect('/mapel');
+        return redirect('/mapel')->with('delete', 'Data Berhasil Dihapus !');
     }
 
     public function update(Request $request, $id)
@@ -63,6 +63,6 @@ class MapelController extends Controller
         $mapel->update($data);
 
 
-        return redirect('/mapel');
+        return redirect('/mapel')->with('update', 'Data Berhasil Diedit !');
     }
 }
